@@ -1,0 +1,164 @@
+.adminContainer {
+  .homeContainerLogo {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 100px;
+  }
+  label {
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+
+
+  label:not(:last-child) {
+    margin-right: 30px;
+  }
+
+  .loginWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .loginContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .inputLogin, .inputPassword {
+        margin-bottom: 20px;
+      }
+      .submit {
+        background-color: inherit;
+        margin: 0;
+        font-size: 24px;
+        padding: 15px 50px;
+        border: 3px solid #abc4ff;
+        border-radius: 15px;
+      }
+
+
+    }
+  }
+  .modalFormTitle {
+    font-size: 40px;
+    color: #fff;
+  }
+
+  .divContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .adminAddBtn {
+      padding: 15px 20px;
+      background: cornflowerblue;
+      color: #fff;
+      border: none;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .adminWrapper {
+  display: inline;
+    position: relative;
+
+    .adminForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  .input {
+    width: 200px;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    outline: 0;
+    border: 1px solid;
+  }
+
+
+
+  .addFormBtn {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+  }
+
+  .modalForm {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgb(0,0,0, 0.6);
+
+    .FullImgWrapper {
+      overflow: auto;
+    }
+
+    .FullImg-img {
+      max-width: 1200px;
+      /* width: 60%; */
+      margin: 40px;
+    }
+
+    .addFormWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .changeFormWrapper, .addFormWrapper, .deleteFormWrapper {
+      div {
+        margin-bottom: 50px;
+        display: flex;
+      }
+      .input:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
+
+    .actionBtn {
+      background: #fff;
+      border-radius: 20px;
+      border:  none;
+      color: #333;
+      padding: 15px 45px;
+      font-size: 28px;
+    }
+
+    .changeFormWrapper {
+      text-align: center;
+    }
+  }
+
+
+
+  td {
+    button {
+      background-color: inherit;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      svg {
+        margin-right: 2px;
+        vertical-align: text-bottom;
+      }
+    }
+
+    button:first-child {
+      margin-right: 15px;
+    }
+  }
+}

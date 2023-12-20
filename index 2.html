@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input required type="text" id="name">
+    <input required type="text" id="program">
+    <input required type="number" id="votes">
+    <button id="btn">add</button>
+    <table>
+        <th>
+        <td>
+            id
+        </td>
+        <td>
+            name
+        </td>
+        <td>
+            program
+        </td>
+        <td>
+            votes
+        </td>
+        </th>
+
+    </table>
+    <script type="module">
+        async function serverAddClient(ClientObj) {
+            console.log(ClientObj)
+            let response = await fetch("http://localhost:3000" + '/api/results', {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(ClientObj),
+            })
+            let data = await response.json()
+
+            console.log(1111)
+            return data;
+        }
+
+        async function serverGetClient() {
+            let response = await fetch("http://localhost:3000" + '/api/results', {
+                method: "GET",
+                headers: { 'Content-Type': 'application/json' },
+            })
+            let data = await response.json()
+            return data;
+        }
+
+        document.getElementById("btn").addEventListener('click', async (event) => {
+            event.preventDefault()
+            const name = document.getElementById("name").value
+            const program = document.getElementById("program").value
+            const votes = document.getElementById("votes").value
+            await serverAddClient({ name: name, program: program, votes: votes })
+            await loadTable()
+        })
+        async function loadTable() {
+            let resultsList = []
+            resultsList = await serverGetClient()
+            console.log(resultsList)
+            resultsList.forEach(e => {
+                const $Table = document.querySelector('table')
+                const $participantsTr = document.createElement('tr')
+                const $participantsId = document.createElement('td')
+                const $participantsName = document.createElement('td')
+                const $participantsProgram = document.createElement('td')
+                const $participantsVotes = document.createElement('td')
+                $participantsId.innerHTML = e.id
+                $participantsName.innerHTML = e.name
+                $participantsProgram.innerHTML = e.program
+                $participantsVotes.innerHTML = e.votes
+                $participantsTr.append($participantsId, $participantsName, $participantsProgram, $participantsVotes)
+                $Table.append($participantsTr)
+            });
+            
+        }
+        loadTable()
+        // import WriteToJSON from "./index.js"
+        // document.getElementById("btn").addEventListener('click', () => {
+        //     const name = document.getElementById("name")
+        //     const program = document.getElementById("program")
+        //     const votes = document.getElementById("votes")
+        //     WriteToJSON(name, program, votes)
+        // })
+    </script>
+</body>
+
+</html>
